@@ -1,3 +1,6 @@
 node_modules/*
 dist/*
 .DS_Store
+src/static/vendor/*
+!src/static/vendor/downloaded
+!src/static/vendor/vendor.json

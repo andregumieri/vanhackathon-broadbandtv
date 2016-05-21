@@ -12,9 +12,11 @@ var dst = "./dist";
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var fs = require('fs');
+var del = require('del');
 var path = require('path');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var concat = require('gulp-concat');
 
 
 
@@ -25,7 +27,7 @@ var source = require('vinyl-source-stream');
  * TASK: default
  * The default gulp runner
  */
-gulp.task('default', ['sass', 'manifest', 'scripts', 'images'], function() {});
+gulp.task('default', ['sass', 'manifest', 'scripts', 'images', 'vendor'], function() {});
 
 /**
  * TASK: sass
@@ -75,4 +77,27 @@ gulp.task('scripts', function() {
 	}
 
 	return ;
+});
+
+/**
+ * TASK: vendor
+ * Runs the vendor.json file and bundle all the dependencies
+ */
+gulp.task('vendor', function() {
+	var vendorSrc = src + '/static/vendor';
+	var vendorDst = dst + '/static/vendor';
+	var vendorJson = JSON.parse(fs.readFileSync(vendorSrc + '/vendor.json'));
+	del.sync(vendorDst);
+
+	for(var file in vendorJson) {
+
+		// Normalizes the paths
+		for(var x=0; x<vendorJson[file].length; x++) {
+			vendorJson[file][x] = vendorSrc+'/'+vendorJson[file][x];
+		}
+
+		gulp.src(vendorJson[file])
+			.pipe(concat(file))
+			.pipe(gulp.dest(vendorDst))
+	}
 });
