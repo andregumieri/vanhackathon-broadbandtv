@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.2.4"
+    "jquery": "~2.2.4",
+    "mustache.js": "mustache#~2.2.1"
   }
 }
