@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+
+	"name": "Yelp + Video <3",
+	"description": "If it\'s possible, this will make Yelp even better. With videos!",
+	"version": "1.0.0",
+
+	"page_action": {
+		"default_icon": {
+			"19": "static/images/icon19.png",
+			"38": "static/images/icon38.png"
+		}
+	},
+
+	"author": "André Gumieri",
+
+	"content_scripts": [
+		{
+			"matches": ["http://www.yelp.com/*"],
+			"css": ["static/css/main.css"],
+			"js": ["static/scripts/main.js"]
+		}
+	]
+}

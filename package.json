@@ -1,0 +1,25 @@
+{
+  "name": "vanhackaton-broadbandtv",
+  "version": "1.0.0",
+  "description": "The BroadbandTV Yelp Challenge for VanHackaton 2016",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andregumieri/vanhackaton-broadbandtv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andregumieri/vanhackaton-broadbandtv/issues"
+  },
+  "homepage": "https://github.com/andregumieri/vanhackaton-broadbandtv#readme",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
