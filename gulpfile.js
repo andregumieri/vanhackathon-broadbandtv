@@ -27,7 +27,7 @@ var concat = require('gulp-concat');
  * TASK: default
  * The default gulp runner
  */
-gulp.task('default', ['sass', 'manifest', 'scripts', 'images', 'vendor'], function() {});
+gulp.task('default', ['sass', 'manifest', 'scripts', 'images', 'views', 'vendor'], function() {});
 
 /**
  * TASK: sass
@@ -55,6 +55,15 @@ gulp.task('manifest', function() {
 gulp.task('images', function() {
 	return gulp.src(src+'/static/images/**/*')
 		.pipe(gulp.dest(dst+'/static/images'));
+});
+
+/**
+ * TASK: views
+ * Copy the manifest file to the dist folder
+ */
+gulp.task('views', function() {
+	return gulp.src(src+'/static/views/**/*')
+		.pipe(gulp.dest(dst+'/static/views'));
 });
 
 /**
