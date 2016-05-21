@@ -18,7 +18,8 @@
 		{
 			"matches": ["http://www.yelp.com/*"],
 			"css": ["static/css/main.css"],
-			"js": ["static/scripts/main.js"]
+			"js": ["static/vendor/vendor.js", "static/scripts/main.js"],
+			"run_at": "document_end"
 		}
 	]
 }
