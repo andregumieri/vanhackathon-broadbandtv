@@ -94,13 +94,13 @@ function getTags() {
 
 	// highlighted words
 	$('.review-highlights-list a.ngram').each(function() {
-		var tag = $(this).text().trim().toLowerCase();
+		var tag = $(this).text().replace(/\(.+\)/g, '').trim().toLowerCase();
 		if(tags.indexOf(tag)<0) tags.push(tag);
 	});
 
 	// restaurant categories
 	$('.category-str-list a').each(function() {
-		var tag = $(this).text().trim().toLowerCase();
+		var tag = $(this).text().replace(/\(.+\)/g, '').trim().toLowerCase();
 		if(tags.indexOf(tag)<0) tags.push(tag);
 	});
 
