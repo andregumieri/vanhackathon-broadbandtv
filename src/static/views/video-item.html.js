@@ -1,4 +1,4 @@
-module.exports = '<div class="bbtv-video-item"> \
+module.exports = '<div class="bbtv-video-item" data-video-id="{{video_id}}"> \
 	<div class="bbtv-video-item__video-box"> \
 		<img src="{{video_thumb}}" alt="" class="bbtv-video-item__video-thumb"> \
 		<button class="bbtv-video-item__play-button">Play</button> \

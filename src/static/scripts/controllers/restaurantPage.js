@@ -58,6 +58,10 @@ function showNoVideoMessage() {
  */
 function addVideo(variables) {
 	var $videoItem = $(Mustache.render(App.Templates['videoItem'], variables));
+	var $playButton = $videoItem.find('.bbtv-video-item__play-button');
+
+	$playButton.on('click', handleVideoPlayButtonClick);
+
 	$videosContainer.append($videoItem);
 }
 
@@ -138,6 +142,41 @@ function loadVideos(callbackSuccess, callbackError) {
 
 
 /**
+ * Opens the video modal
+ *
+ * @param {string} videoId: ID of the YouTube video
+ */
+function openVideoModal(videoId) {
+	if($('body>.bbtv-video-modal').is('*')) $('body>.bbtv-video-modal').remove();
+
+	var $modal = $(Mustache.render(App.Templates['videoModal'], {
+		width: 800,
+		height: 450,
+		video_id: videoId
+	}));
+
+	var $buttonClose = $modal.find('.bbtv-video-modal__button-close');
+	var $hitClose = $modal.find('.bbtv-video-modal__hit-close');
+	$buttonClose.on('click', handleModalButtonCloseClick);
+	$hitClose.on('click', handleModalButtonCloseClick);
+
+	$('body').append($modal);
+	$modal.fadeIn(300);
+}
+
+
+/**
+ * Closes the video modal
+ */
+function closeVideoModal() {
+	if(!$('body>.bbtv-video-modal').is('*')) return false;
+	$('body>.bbtv-video-modal').fadeOut(function() {
+		$(this).remove();
+	});
+}
+
+
+/**
  * Callback of video load
  */
 function handleLoadVideosCallbackSuccess(data) {
@@ -150,6 +189,7 @@ function handleLoadVideosCallbackSuccess(data) {
 	for(var x=0; x<data.items.length; x++) {
 		var video = data.items[x];
 		addVideo({
+			video_id: video.id.videoId,
 			channel_title: video.snippet.channelTitle,
 			video_title: video.snippet.title,
 			video_thumb: video.snippet.thumbnails.medium.url
@@ -196,6 +236,25 @@ function handleNavButtonClick(e) {
 	// Set the new translate position
 	$videosContainer.data('lastTranslate', lastTranslate);
 }
+
+
+/**
+ * Handles click on play video buttons
+ */
+function handleVideoPlayButtonClick(e) {
+	e.preventDefault();
+	openVideoModal($(this).parents('.bbtv-video-item').data('video-id'));
+}
+
+
+/**
+ * Handles click on close modal button
+ */
+function handleModalButtonCloseClick(e) {
+	e.preventDefault();
+	closeVideoModal();
+}
+
 
 
 
