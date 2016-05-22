@@ -4,6 +4,8 @@ var $videosWrap = null;
 
 var $navButtonLeft = null;
 var $navButtonRight = null;
+var $openCloseVideosButton = null;
+var $hideAllLayerDiv = null;
 
 var $domTopShelf = $('.top-shelf');
 
@@ -39,15 +41,19 @@ function init() {
  */
 function setupVideoWrap() {
 	$videosWrap = $(Mustache.render(App.Templates['videosWrap'], {'restaurant_name': restaurant_name}));
+
 	$videosContainer = $videosWrap.find('.bbtv-videos-wrap__items-container');
 	$navButtonLeft = $videosWrap.find('.bbtv-videos-wrap__nav-button.bbtv-videos-wrap__nav-button--left');
 	$navButtonRight = $videosWrap.find('.bbtv-videos-wrap__nav-button.bbtv-videos-wrap__nav-button--right');
+	$openCloseVideosButton = $videosWrap.find('.bbtv-videos-wrap__open-close-button');
+	$hideAllLayerDiv = $videosWrap.find('.bbtv-videos-wrap__hideall-layer');
 
 	$navButtonLeft.addClass('bbtv-videos-wrap__nav-button--inactive');
 	$navButtonRight.addClass('bbtv-videos-wrap__nav-button--inactive');
 
 	$navButtonLeft.on('click', handleNavButtonClick);
 	$navButtonRight.on('click', handleNavButtonClick);
+	$openCloseVideosButton.on('click', handleOpenCloseVideosButtonClick);
 
 	$videosWrap.insertBefore($domTopShelf);
 }
@@ -189,6 +195,32 @@ function closeVideoModal() {
 
 
 /**
+ * Opens the video wrap
+ */
+function openVideoWrap() {
+	$openCloseVideosButton.html('hide videos');
+	$openCloseVideosButton.removeClass('bbtv-videos-wrap__open-close-button--closed');
+	$hideAllLayerDiv.fadeOut('fast');
+	$videosWrap.animate({
+		height: $videosWrap.data('lastHeight')
+	}, 500);
+}
+
+
+/**
+ * Closes the video wrap
+ */
+function closeVideoWrap() {
+	$openCloseVideosButton.html('show videos');
+	$openCloseVideosButton.addClass('bbtv-videos-wrap__open-close-button--closed');
+	$hideAllLayerDiv.fadeIn('fast');
+	$videosWrap.data('lastHeight', $videosWrap.outerHeight());
+	$videosWrap.animate({
+		height: 0, minHeight: 0
+	}, 500);
+}
+
+/**
  * Callback of video load
  */
 function handleLoadVideosCallbackSuccess(data) {
@@ -284,6 +316,19 @@ function handleVideoPlayButtonClick(e) {
 function handleModalButtonCloseClick(e) {
 	e.preventDefault();
 	closeVideoModal();
+}
+
+
+/**
+ * Handles click on hide/show videos wrap
+ */
+function handleOpenCloseVideosButtonClick(e) {
+	e.preventDefault();
+	if(/--closed/.test($(this)[0].className)) {
+		openVideoWrap();
+	} else {
+		closeVideoWrap();
+	}
 }
 
 
