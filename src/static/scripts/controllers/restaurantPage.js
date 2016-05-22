@@ -251,9 +251,15 @@ function handleNavButtonClick(e) {
 		lastTranslate = 0;
 	}
 
+	// The outside right after lastTranslate move
+	var finishedOutsideRight = ($videosContainer.width()-window.innerWidth)+90+lastTranslate;
+
 	// Active or deactive buttons depending on container position
 	if(lastTranslate<0) $navButtonLeft.removeClass('bbtv-videos-wrap__nav-button--inactive');
 	else $navButtonLeft.addClass('bbtv-videos-wrap__nav-button--inactive');
+
+	if(outsideRight <= -90) $navButtonRight.addClass('bbtv-videos-wrap__nav-button--inactive');
+	else $navButtonRight.removeClass('bbtv-videos-wrap__nav-button--inactive');
 
 	// Move the container
 	$videosContainer.css('transform', 'translate3d(' + lastTranslate + 'px, 0, 0)');
