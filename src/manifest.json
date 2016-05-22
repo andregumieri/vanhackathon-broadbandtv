@@ -22,7 +22,7 @@
 
 	"content_scripts": [
 		{
-			"matches": ["http://www.yelp.com/*"],
+			"matches": ["http://www.yelp.com/biz/*"],
 			"css": ["static/css/main.css"],
 			"js": ["static/vendor/vendor.js", "static/scripts/main.js"],
 			"run_at": "document_end"
