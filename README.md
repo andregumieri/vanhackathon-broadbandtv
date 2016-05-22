@@ -1,2 +1,2 @@
-# vanhackaton-broadbandtv
-The BroadbandTV Yelp Challenge for VanHackaton 2016
+# vanhackathon-broadbandtv
+The BroadbandTV Yelp Challenge for VanHackathon 2016
