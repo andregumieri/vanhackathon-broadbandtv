@@ -219,8 +219,6 @@ function handleNavButtonClick(e) {
 	e.preventDefault();
 	var $this = $(this);
 
-	console.log('Button clicked', $this[0].className);
-
 	// Get the last translate position (if there is any)
 	var lastTranslate = $videosContainer.data('lastTranslate') ? $videosContainer.data('lastTranslate') : 0;
 
@@ -230,6 +228,17 @@ function handleNavButtonClick(e) {
 	// Move the container to the direction of the clicked button
 	if(/--left/.test($this[0].className)) lastTranslate+=290;
 	else if(/--right/.test($this[0].className)) lastTranslate-=290;
+
+	// Adjust last translate so it don't pass the end of the row
+	var outsideRight = ($videosContainer.width()-window.innerWidth)+90+lastTranslate;
+	if(outsideRight < -90) {
+		var diff = -90 - outsideRight;
+		lastTranslate+=diff;
+	}
+
+	if(lastTranslate>0) {
+		lastTranslate = 0;
+	}
 
 	// Active or deactive buttons depending on container position
 	if(lastTranslate<0) $navButtonLeft.removeClass('bbtv-videos-wrap__nav-button--inactive');
