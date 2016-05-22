@@ -4,4 +4,76 @@
 	margin: 0 15px;
 	display: inline-block;
 	background-color: #c21613;
+	vertical-align: middle;
+
+
+	/**
+	 * element: video-box
+	 * The box that show the video thumbnail and play button
+	 */
+	&__video-box {
+		position: relative;
+		height: 147px;
+		width: 100%;
+		overflow: hidden;
+	}
+
+
+	/**
+	 * element: video-thumb
+	 * The thumbnail of the video
+	 */
+	&__video-thumb {
+		width: 102%; // the extra 2% avoids red background to appear
+		height: auto;
+
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+
+	/**
+	 * element: info-box
+	 * Box that contains informations about the video, as owner and title
+	 */
+	&__info-box {
+		width: 100%;
+		box-sizing: border-box;
+		border-left: 1px solid #ccccc8;
+		border-bottom: 1px solid #ccccc8;
+		border-right: 1px solid #ccccc8;
+		background-color: #f5f5f1;
+		height: 60px;
+		padding: 3px;
+	}
+
+
+	/**
+	 * element: channel-title
+	 * The title of the channel
+	 */
+	&__channel-title {
+		display: block;
+		font-size: 12px;
+		color: #c21613;
+		line-height: 15px;
+		height: 15px;
+		overflow: hidden;
+	}
+
+
+	/**
+	 * element: video-title
+	 * The title of the video
+	 */
+	&__video-title {
+		font-size: 14px;
+		line-height: 18px;
+		height: 36px;
+		overflow: hidden;
+		color: #000;
+		font-weight: normal;
+	}
 }
