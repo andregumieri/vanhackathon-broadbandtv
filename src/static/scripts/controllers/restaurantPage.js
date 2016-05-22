@@ -43,6 +43,9 @@ function setupVideoWrap() {
 	$navButtonLeft = $videosWrap.find('.bbtv-videos-wrap__nav-button.bbtv-videos-wrap__nav-button--left');
 	$navButtonRight = $videosWrap.find('.bbtv-videos-wrap__nav-button.bbtv-videos-wrap__nav-button--right');
 
+	$navButtonLeft.addClass('bbtv-videos-wrap__nav-button--inactive');
+	$navButtonRight.addClass('bbtv-videos-wrap__nav-button--inactive');
+
 	$navButtonLeft.on('click', handleNavButtonClick);
 	$navButtonRight.on('click', handleNavButtonClick);
 
@@ -54,7 +57,11 @@ function setupVideoWrap() {
  * Show a message telling the user that there isn't any videos to present
  */
 function showNoVideoMessage() {
-
+	console.log('No videos here');
+	var message = "Oh no :( We didn't found any delicious for " + restaurant_name + "'s kitchen.";
+	$message = $(Mustache.render(App.Templates['videoMessage'], {'message': message}));
+	$videosWrap.append($message);
+	App.Modules.loading.off($videosContainer);
 }
 
 
@@ -202,6 +209,7 @@ function handleLoadVideosCallbackSuccess(data) {
 	}
 
 	fixContainerSize();
+	$navButtonRight.removeClass('bbtv-videos-wrap__nav-button--inactive');
 	App.Modules.loading.off($videosContainer);
 }
 
@@ -209,7 +217,10 @@ function handleLoadVideosCallbackSuccess(data) {
  * Callback error of video load
  */
 function handleLoadVideosCallbackError(data) {
-
+	var message = "That's odd. An unexpected error occured while trying to find some delicious videos. Please, try again later.";
+	$message = $(Mustache.render(App.Templates['videoMessage'], {'message': message}));
+	$videosWrap.append($message);
+	App.Modules.loading.off($videosContainer);
 }
 
 /**

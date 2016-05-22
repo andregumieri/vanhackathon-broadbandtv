@@ -4,7 +4,8 @@ jQuery(document).ready(function($) {
 	App.Templates = {
 		'videoItem': require('../views/video-item.html.js'),
 		'videosWrap': require('../views/videos-wrap.html.js'),
-		'videoModal': require('../views/video-modal.html.js')
+		'videoModal': require('../views/video-modal.html.js'),
+		'videoMessage': require('../views/video-message.html.js')
 	};
 
 	App.Modules = {
