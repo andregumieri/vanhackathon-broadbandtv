@@ -1,9 +1,15 @@
 {
 	"manifest_version": 2,
 
-	"name": "Yelp + Video <3",
-	"description": "If possible, this will make Yelp even better. With videos!",
+	"name": "Yelp's Recipes",
+	"description": "Bring your favorite restaurant to your kitchen",
 	"version": "1.0.0",
+
+	"icons": {
+		"16": "static/images/icon16.png",
+		"48": "static/images/icon48.png",
+		"128": "static/images/icon128.png"
+	},
 
 	"page_action": {
 		"default_icon": {
