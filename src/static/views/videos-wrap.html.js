@@ -1,6 +1,6 @@
 module.exports = '\
 <section class="bbtv-videos-wrap"> \
-	<h2 class="bbtv-videos-wrap__title">Delicous related to {{restaurant_name}}\'s kitchen</h2> \
+	<h2 class="bbtv-videos-wrap__title">Delicious related to {{restaurant_name}}\'s kitchen</h2> \
 	<div class="bbtv-videos-wrap__items-wrap"> \
 		<div class="bbtv-videos-wrap__items-container"> \
 		</div> \
