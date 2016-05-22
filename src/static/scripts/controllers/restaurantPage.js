@@ -14,7 +14,12 @@ var $domTopShelf = $('.top-shelf');
  */
 function condition() {
 	var isTheRightPath = /^\/biz\/.+/.test(location.pathname);
-	var isARestaurantPage = /restaurants/i.test($('span[itemtype="http://data-vocabulary.org/Breadcrumb"] [itemprop="title"]').eq(0).text().trim());
+	var isARestaurantPage = false;
+	$('span[itemtype="http://data-vocabulary.org/Breadcrumb"] [itemprop="title"]').each(function() {
+		if(/restaurants/i.test($(this).text().trim())) {
+			isARestaurantPage = true;
+		}
+	});
 	return isTheRightPath && isARestaurantPage;
 }
 
