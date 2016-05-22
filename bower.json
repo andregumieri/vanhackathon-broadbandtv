@@ -1,0 +1,23 @@
+{
+  "name": "vanhackaton-broadbandtv",
+  "description": "The BroadbandTV Yelp Challenge for VanHackaton 2016",
+  "main": "index.js",
+  "authors": [
+    "André Gumieri <andregumieri@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/andregumieri/vanhackaton-broadbandtv",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/static/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.4",
+    "mustache.js": "mustache#~2.2.1"
+  }
+}

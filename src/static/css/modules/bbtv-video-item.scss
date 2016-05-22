@@ -1,0 +1,130 @@
+.bbtv-video-item {
+	width: 260px;
+	height: 207px;
+	margin: 0 15px;
+	display: inline-block;
+	background-color: #c21613;
+	vertical-align: middle;
+
+
+	/**
+	 * element: video-box
+	 * The box that show the video thumbnail and play button
+	 */
+	&__video-box {
+		position: relative;
+		height: 147px;
+		width: 100%;
+		overflow: hidden;
+
+		&:hover {
+			.bbtv-video-item__video-thumb {
+				transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1.1);
+			}
+		}
+	}
+
+
+	/**
+	 * element: video-thumb
+	 * The thumbnail of the video
+	 */
+	&__video-thumb {
+		width: 102%; // the extra 2% avoids red background to appear
+		height: auto;
+
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%) scale3d(1.0, 1.0, 1.0);
+
+		transition-property: transform;
+		transition-duration: 300ms;
+	}
+
+
+	/**
+	 * element: info-box
+	 * Box that contains informations about the video, as owner and title
+	 */
+	&__info-box {
+		width: 100%;
+		box-sizing: border-box;
+		border-left: 1px solid #ccccc8;
+		border-bottom: 1px solid #ccccc8;
+		border-right: 1px solid #ccccc8;
+		background-color: #f5f5f1;
+		height: 60px;
+		padding: 3px;
+	}
+
+
+	/**
+	 * element: channel-title
+	 * The title of the channel
+	 */
+	&__channel-title {
+		display: block;
+		font-size: 12px;
+		color: #c21613;
+		line-height: 15px;
+		height: 15px;
+		overflow: hidden;
+	}
+
+
+	/**
+	 * element: video-title
+	 * The title of the video
+	 */
+	&__video-title {
+		font-size: 14px;
+		line-height: 18px;
+		height: 36px;
+		overflow: hidden;
+		color: #000;
+		font-weight: normal;
+	}
+
+
+	/**
+	 * element: play-button
+	 * The play element hover the thumbnail
+	 */
+	&__play-button {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.1);
+		border: 0;
+		outline: none;
+		z-index: 10;
+		font-size: 0;
+		cursor: pointer;
+
+		&::before {
+			content: '\f144';
+
+			font-family: 'FontAwesome';
+			font-size: 44px;
+			line-height: 100px;
+			color: #fff;
+			text-align: center;
+
+			display: block;
+			width: 100px;
+			height: 100px;
+
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -50px;
+			margin-top: -50px;
+		}
+	}
+
+
+
+}

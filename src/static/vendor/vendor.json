@@ -1,0 +1,6 @@
+{
+	"vendor.js": [
+		"jquery/dist/jquery.min.js",
+		"mustache.js/mustache.min.js"
+	]
+}
